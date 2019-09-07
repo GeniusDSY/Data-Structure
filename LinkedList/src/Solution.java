@@ -7,15 +7,10 @@
 public class Solution {
 
     public static void main(String[] args) {
-        ListNode listNode = new ListNode(1);
-        listNode.next = new ListNode(2);
-        listNode.next.next = new ListNode(6);
-        listNode.next.next.next = new ListNode(3);
-        listNode.next.next.next.next = new ListNode(4);
-        listNode.next.next.next.next.next = new ListNode(5);
-        listNode.next.next.next.next.next.next = new ListNode(6);
-        System.out.println(listNode);
-        System.out.println(removeElements(listNode, 6));
+        int[] nums = {1,2,6,3,4,5,6};
+        ListNode head = new ListNode(nums);
+        System.out.println(head);
+        System.out.println(removeElements(head, 6));
 
     }
 
