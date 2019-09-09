@@ -191,6 +191,50 @@ public class BST<E extends Comparable<E>> {
     }
 
     /**
+     * 寻找最小节点
+     * @return 最小节点的数值
+     */
+    public E minimum(){
+        if (size == 0) {
+            throw new IllegalArgumentException("BST is empty!!");
+        }
+        return minimum(root).e;
+    }
+
+    private Node minimum(Node node){
+        if (node.left == null){
+            return node;
+        }
+        return minimum(node.left);
+    }
+
+    /**
+     * 寻找最小节点
+     * @return 最小节点的数值
+     */
+    public E maximum(){
+        if (size == 0) {
+            throw new IllegalArgumentException("BST is empty!!");
+        }
+        return maximum(root).e;
+    }
+
+    private Node maximum(Node node){
+        if (node.right == null){
+            return node;
+        }
+        return maximum(node.right);
+    }
+
+
+    @Override
+    public String toString() {
+        StringBuilder result = new StringBuilder();
+        generateBSTString(root,0,result);
+        return result.toString();
+    }
+
+    /**
      * 遍历打印二叉树
      * @param node
      * @param depth
@@ -219,10 +263,4 @@ public class BST<E extends Comparable<E>> {
         return result.toString();
     }
 
-    @Override
-    public String toString() {
-        StringBuilder result = new StringBuilder();
-        generateBSTString(root,0,result);
-        return result.toString();
-    }
 }
