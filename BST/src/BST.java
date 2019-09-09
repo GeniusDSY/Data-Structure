@@ -88,4 +88,50 @@ public class BST<E extends Comparable<E>> {
         }
     }
 
+
+    /**
+     * 二分搜索树的前序遍历
+     */
+    public void preOrder(){
+        preOrder(root);
+    }
+
+
+    /**
+     * 前序遍历以node为根的二分搜索树，递归算法
+     * @param node
+     */
+    private void preOrder(Node node){
+        if (node != null){
+            System.out.println(node.e);
+            preOrder(node.left);
+            preOrder(node.right);
+        }
+    }
+
+
+    private void generateBSTString(Node node,int depth,StringBuilder result){
+        if (node == null){
+            result.append(generateDepthString(depth) + "null\n");
+            return;
+        }
+        result.append(generateDepthString(depth) + node.e + "\n");
+        generateBSTString(node.left,depth + 1 ,result);
+        generateBSTString(node.right,depth + 1,result);
+    }
+
+    private String generateDepthString(int depth) {
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < depth; i++) {
+            result.append("--");
+        }
+        return result.toString();
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder result = new StringBuilder();
+        generateBSTString(root,0,result);
+        return result.toString();
+    }
 }
