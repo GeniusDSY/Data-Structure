@@ -1,3 +1,5 @@
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 /**
@@ -170,6 +172,30 @@ public class BST<E extends Comparable<E>> {
     }
 
 
+    /**
+     * 层序遍历
+     */
+    public void leverOrder(){
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(root);
+        while (!queue.isEmpty()){
+            Node current = queue.remove();
+            System.out.println(current.e);
+            if (current.left != null){
+                queue.add(current.left);
+            }
+            if (current.right != null){
+                queue.add(current.right);
+            }
+        }
+    }
+
+    /**
+     * 遍历打印二叉树
+     * @param node
+     * @param depth
+     * @param result
+     */
     private void generateBSTString(Node node,int depth,StringBuilder result){
         if (node == null){
             result.append(generateDepthString(depth) + "null\n");
@@ -180,6 +206,11 @@ public class BST<E extends Comparable<E>> {
         generateBSTString(node.right,depth + 1,result);
     }
 
+    /**
+     * 表现层次数的符号输出
+     * @param depth
+     * @return
+     */
     private String generateDepthString(int depth) {
         StringBuilder result = new StringBuilder();
         for (int i = 0; i < depth; i++) {
