@@ -1,3 +1,5 @@
+import java.util.Stack;
+
 /**
  * @author :DengSiYuan
  * @date :2019/9/8 14:42
@@ -106,6 +108,64 @@ public class BST<E extends Comparable<E>> {
             System.out.println(node.e);
             preOrder(node.left);
             preOrder(node.right);
+        }
+    }
+
+    /**
+     * 前序遍历的非递归
+     */
+    public void preOrderNR(){
+        Stack<Node> stack = new Stack<>();
+        stack.push(root);
+        while (!stack.isEmpty()){
+            Node current = stack.pop();
+            System.out.println(current.e);
+            if (current.right != null) {
+                stack.push(current.right);
+            }
+            if (current.left != null) {
+                stack.push(current.left);
+            }
+        }
+    }
+
+    /**
+     * 二分搜索树的中序遍历
+     */
+    public void inOrder(){
+        inOrder(root);
+    }
+
+
+    /**
+     * 中序遍历以node为根的二分搜索树，递归算法
+     * @param node
+     */
+    private void inOrder(Node node){
+        if (node != null){
+            inOrder(node.left);
+            System.out.println(node.e);
+            inOrder(node.right);
+        }
+    }
+
+    /**
+     * 二分搜索树的后序遍历
+     */
+    public void postOrder(){
+        postOrder(root);
+    }
+
+
+    /**
+     * 后序遍历以node为根的二分搜索树，递归算法
+     * @param node
+     */
+    private void postOrder(Node node){
+        if (node != null){
+            postOrder(node.left);
+            postOrder(node.right);
+            System.out.println(node.e);
         }
     }
 
